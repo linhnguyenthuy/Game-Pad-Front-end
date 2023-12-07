@@ -40,7 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+a:link {
+  text-decoration: none;
+  text-decoration-color: indianred;
+}
+a:active {
+  color: indianred;
+}
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3%;
+  gap: 3%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .games h2 {
   font-size: 2.5vh;
   width: 25vh;
@@ -62,18 +78,12 @@
   align-items: end;
   margin: 5vh 0 5vh 0;
 }
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2vh;
-}
 
 .creators {
   display: flex;
   flex-wrap: wrap;
   gap: 3vh;
-  align-items: end;
+  align-items: flex-start;
   margin: 5vh 0 5vh 0;
 }
 
@@ -85,4 +95,27 @@
   border-radius: 2vh;
   box-shadow: 0 0 15px #ed171e;
   margin: 2vh 2vh 0 2vh;
+}
+button {
+  height: 30px;
+  border: 1px solid #ed171e;
+  color: #ed171e;
+  background-color: #fff;
+  border-radius: 1.5vh;
+  gap: 1vh;
+}
+.buttons {
+  display: flex;
+
+  gap: 2vh;
+}
+.gamelink {
+  width: 25vh;
+}
+.avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #fff;
 }

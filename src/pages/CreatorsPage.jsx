@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const CreatorsPage = () => {
@@ -51,6 +52,18 @@ const CreatorsPage = () => {
               }
               alt={creator.name}
             />
+            <div className="gamelink">
+              {creator.games.map((game) => {
+                // console.log(game);
+                return (
+                  <div key={game.id} style={{ textDecoration: `none` }}>
+                    <Link to={`/games/${game.id}`}>
+                      <p>{game.name} </p>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ))}
       </div>

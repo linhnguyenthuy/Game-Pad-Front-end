@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import ReactStars from "react-rating-stars-component";
+import useCookie from "react-use-cookie";
 
 const GamesPage = () => {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
+  const [token] = useCookie("token");
+  const [favoriteGames, setFavoriteGames] = useCookie("favoriteGames", []);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -29,6 +33,7 @@ const GamesPage = () => {
     };
     fetchGames();
   }, [page]);
+
   const handleNext = () => {
     setPage(page + 1);
   };
@@ -42,8 +47,17 @@ const GamesPage = () => {
   const handleFirst = () => {
     setPage(1);
   };
+
   const handleLast = () => {
     setPage(2739);
+  };
+
+  const handleFavorite = (game) => {
+    const updatedFavorites = [
+      ...favoriteGames,
+      { id: game.id, image: game.background_image },
+    ];
+    setFavoriteGames(updatedFavorites);
   };
 
   return (
@@ -61,6 +75,16 @@ const GamesPage = () => {
               <h2>{game.name}</h2>
               <img src={game.background_image} alt={game.name} />
             </Link>
+            <ReactStars
+              count={5}
+              value={game.rating}
+              size={15}
+              activeColor="#ffd700"
+              edit={false}
+            />
+            {token && (
+              <button onClick={() => handleFavorite(game.id)}>Favorite</button>
+            )}
           </div>
         ))}
       </div>
